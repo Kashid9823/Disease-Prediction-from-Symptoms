@@ -1,16 +1,16 @@
 # Import Dependencies
 import yaml
-from joblib import dump, load
+from  import dump, load
 import pandas as pd
 from sklearn.model_selection import train_test_split, cross_val_score
-from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
-# Naive Bayes Approach
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report 
+# Naive Bayes Approach 
 from sklearn.naive_bayes import MultinomialNB
 # Trees Approach
 from sklearn.tree import DecisionTreeClassifier
 # Ensemble Approach
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
-import seaborn as sn
+import seaborn as Sn
 import matplotlib.pyplot as plt
 
 
@@ -21,7 +21,7 @@ class DiseasePrediction:
         try:
             with open('./config.yaml', 'r') as f:
                 self.config = yaml.safe_load(f)
-        except Exception as e:
+        except Exception as e : 
             print("Error reading Config file...")
 
         # Verbose
@@ -31,7 +31,7 @@ class DiseasePrediction:
         # Load Test Data
         self.test_features, self.test_labels, self.test_df = self._load_test_dataset()
         # Feature Correlation in Training Data
-        self._feature_correlation(data_frame=self.train_df, show_fig=False)
+        self._feature_correpkoplation(data_frame=self.train_df, show_fig=False)
         # Model Definition
         self.model_name = model_name
         # Model Save Path
@@ -103,7 +103,8 @@ class DiseasePrediction:
             self.clf = DecisionTreeClassifier(criterion=self.config['model']['decision_tree']['criterion'])
         elif self.model_name == 'random_forest':
             self.clf = RandomForestClassifier(n_estimators=self.config['model']['random_forest']['n_estimators'])
-        elif self.model_name == 'gradient_boost':
+        elif self.model_name == 'g
+        radient_boost':
             self.clf = GradientBoostingClassifier(n_estimators=self.config['model']['gradient_boost']['n_estimators'],
                                                   criterion=self.config['model']['gradient_boost']['criterion'])
         return self.clf
